@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:sisgocomponents/src/app_text_styles.dart';
-
 import '../sisgocomponents.dart';
 
 enum ButtonVariation {
@@ -19,8 +17,8 @@ class CustomButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
   bool isLoading = false;
   double? width = 400;
-  Color? backgroundColor = colorStyles.materialPrimary.shade500;
-  Color? textColor = colorStyles.white;
+  Color? backgroundColor;
+  Color? textColor;
 
   CustomButtonWidget({
     Key? key,
@@ -52,7 +50,7 @@ class CustomButtonWidget extends StatelessWidget {
         break;
     }
     return Container(
-      height: 56,
+      height: height,
       width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -61,7 +59,8 @@ class CustomButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(
                 10.0), // Ajuste o valor conforme necessário
           ),
-          backgroundColor: backgroundColor,
+          backgroundColor:
+              backgroundColor ?? colorStyles.materialPrimary.shade500,
         ),
         onPressed: onPressed,
         child: isLoading
@@ -82,7 +81,8 @@ class CustomButtonWidget extends StatelessWidget {
                           ],
                         ),
                   CustomTextWidget(text,
-                      style: AppTextStyles.paragraph(textColor: textColor!)),
+                      style: AppTextStyles.paragraph(
+                          textColor: textColor ?? colorStyles.white)),
                 ],
               ),
       ),
