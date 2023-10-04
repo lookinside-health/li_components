@@ -12,11 +12,15 @@ import '../sisgocomponents.dart';
 class CustomDropdownWidget extends StatelessWidget {
   String value;
   List<String> items;
+  Color? backgroundColor;
+  Color? textColor;
 
   CustomDropdownWidget({
     Key? key,
     required this.value,
     required this.items,
+    this.backgroundColor,
+    this.textColor,
   }) : super(key: key);
 
   @override
@@ -25,7 +29,7 @@ class CustomDropdownWidget extends StatelessWidget {
       alignment: Alignment.center,
       height: 56,
       decoration: BoxDecoration(
-          color: colorStyles.materialNeutral.shade300,
+          color: backgroundColor ?? colorStyles.materialNeutral.shade300,
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonFormField<String>(
         isExpanded: true,
@@ -42,7 +46,7 @@ class CustomDropdownWidget extends StatelessWidget {
             child: CustomTextWidget(
               value,
               style: AppTextStyles.paragraph(
-                  textColor: colorStyles.materialNeutral.shade700),
+                  textColor: textColor ?? colorStyles.materialNeutral.shade700),
             ),
           );
         }).toList(),

@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:sisgocomponents/sisgocomponents.dart';
-import 'package:sisgocomponents/src/app_color_styles.dart';
+import 'package:sisgocomponents/src/app_text_styles.dart';
 
 enum InputVariation {
   longInput,
@@ -18,6 +19,10 @@ class CustomInputWidget extends StatelessWidget {
   final IconData icon;
   final bool isPassword;
   final String? Function(String?) validator;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final Color? hintColor;
+  final Color? iconColor;
 
   const CustomInputWidget({
     Key? key,
@@ -26,9 +31,13 @@ class CustomInputWidget extends StatelessWidget {
     required this.type,
     required this.obsText,
     required this.onChanged,
-    required this.validator,
     required this.icon,
     required this.isPassword,
+    required this.validator,
+    this.backgroundColor,
+    this.textColor,
+    this.hintColor,
+    this.iconColor,
   }) : super(key: key);
 
   /// Widget para o Input customizado
@@ -39,16 +48,13 @@ class CustomInputWidget extends StatelessWidget {
     return Container(
       height: 56,
       decoration: BoxDecoration(
-          color: colorStyles.materialNeutral.shade300,
+          color: backgroundColor ?? colorStyles.materialNeutral.shade300,
           borderRadius: BorderRadius.circular(10)),
       width: size.width,
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
-        style: GoogleFonts.inter(
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
-          color: colorStyles.materialNeutral.shade900,
-        ),
+        style: AppTextStyles.paragraph(
+            textColor: textColor ?? colorStyles.materialNeutral.shade900),
         controller: controller,
         keyboardType: type,
         obscureText: obsText,
@@ -60,7 +66,7 @@ class CustomInputWidget extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: colorStyles.materialNeutral.shade900,
+                color: iconColor ?? colorStyles.materialNeutral.shade900,
               ),
             ],
           ),
@@ -78,7 +84,7 @@ class CustomInputWidget extends StatelessWidget {
           hintStyle: GoogleFonts.inter(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-            color: colorStyles.materialNeutral.shade700,
+            color: hintColor ?? colorStyles.materialNeutral.shade700,
           ),
           hintText: placeHolder,
           contentPadding: const EdgeInsets.only(

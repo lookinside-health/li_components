@@ -1,14 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:sisgocomponents/src/app_text_styles.dart';
 
 import '../sisgocomponents.dart';
 
 enum ButtonVariation {
-  longGreen,
-  longWhite,
-  shortGreen,
-  shortWhite,
+  small,
+  medium,
+  large,
 }
 
 // ignore: must_be_immutable
@@ -18,6 +18,9 @@ class CustomButtonWidget extends StatelessWidget {
   final Icon? icon;
   final VoidCallback onPressed;
   bool isLoading = false;
+  double? width = 400;
+  Color? backgroundColor = colorStyles.materialPrimary.shade500;
+  Color? textColor = colorStyles.white;
 
   CustomButtonWidget({
     Key? key,
@@ -26,45 +29,26 @@ class CustomButtonWidget extends StatelessWidget {
     this.icon,
     required this.onPressed,
     required this.isLoading,
+    this.backgroundColor,
+    this.textColor,
   }) : super(key: key);
 
   /// Widget para o Button customizado
   // Widget for Button custom
   Widget build(BuildContext context) {
-    Color backgroundColor;
-    Color textColor;
-    bool border;
-    double width;
-
-    Size screenSize = MediaQuery.of(context).size;
+    double height;
 
     switch (variation) {
-      case ButtonVariation.longGreen:
-        backgroundColor = colorStyles.materialPrimary.shade500;
-        textColor = colorStyles.white;
-        border = false;
-        width = screenSize.width - 30; //Cada lado da tela tem borda de 15
+      case ButtonVariation.small:
+        height = 30;
         break;
 
-      case ButtonVariation.longWhite:
-        backgroundColor = colorStyles.white;
-        textColor = colorStyles.materialPrimary.shade500;
-        width = screenSize.width - 30;
-        border = true;
+      case ButtonVariation.medium:
+        height = 40;
         break;
 
-      case ButtonVariation.shortGreen:
-        backgroundColor = colorStyles.materialPrimary.shade500;
-        textColor = colorStyles.white;
-        width = (screenSize.width - 30) / 2; //Metade do tamanho do botão padrão
-        border = false;
-        break;
-
-      case ButtonVariation.shortWhite:
-        backgroundColor = colorStyles.white;
-        textColor = colorStyles.materialPrimary.shade500;
-        width = (screenSize.width - 30) / 2; //Metade do tamanho do botão padrão
-        border = true;
+      case ButtonVariation.large:
+        height = 50;
         break;
     }
     return Container(
@@ -77,10 +61,6 @@ class CustomButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(
                 10.0), // Ajuste o valor conforme necessário
           ),
-          side: border
-              ? BorderSide(
-                  color: colorStyles.materialNeutral.shade600, width: 0.5)
-              : const BorderSide(color: Colors.transparent),
           backgroundColor: backgroundColor,
         ),
         onPressed: onPressed,
@@ -102,7 +82,7 @@ class CustomButtonWidget extends StatelessWidget {
                           ],
                         ),
                   CustomTextWidget(text,
-                      style: AppTextStyles.subTitle(textColor: textColor)),
+                      style: AppTextStyles.paragraph(textColor: textColor!)),
                 ],
               ),
       ),
