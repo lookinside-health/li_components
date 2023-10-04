@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:sisgocomponents/src/app_color_styles.dart';
 import 'package:sisgocomponents/src/app_text_styles.dart';
-import 'package:sisgocomponents/src/custom_text_widget.dart';
+
+import '../sisgocomponents.dart';
 
 enum ButtonVariation {
   longGreen,
@@ -40,29 +40,29 @@ class CustomButtonWidget extends StatelessWidget {
 
     switch (variation) {
       case ButtonVariation.longGreen:
-        backgroundColor = AppColorStyles.primary500;
-        textColor = AppColorStyles.white;
+        backgroundColor = colorStyles.materialPrimary.shade500;
+        textColor = colorStyles.white;
         border = false;
         width = screenSize.width - 30; //Cada lado da tela tem borda de 15
         break;
 
       case ButtonVariation.longWhite:
-        backgroundColor = AppColorStyles.white;
-        textColor = AppColorStyles.primary500;
+        backgroundColor = colorStyles.white;
+        textColor = colorStyles.materialPrimary.shade500;
         width = screenSize.width - 30;
         border = true;
         break;
 
       case ButtonVariation.shortGreen:
-        backgroundColor = AppColorStyles.primary500;
-        textColor = AppColorStyles.white;
+        backgroundColor = colorStyles.materialPrimary.shade500;
+        textColor = colorStyles.white;
         width = (screenSize.width - 30) / 2; //Metade do tamanho do botão padrão
         border = false;
         break;
 
       case ButtonVariation.shortWhite:
-        backgroundColor = AppColorStyles.white;
-        textColor = AppColorStyles.primary500;
+        backgroundColor = colorStyles.white;
+        textColor = colorStyles.materialPrimary.shade500;
         width = (screenSize.width - 30) / 2; //Metade do tamanho do botão padrão
         border = true;
         break;
@@ -78,14 +78,15 @@ class CustomButtonWidget extends StatelessWidget {
                 10.0), // Ajuste o valor conforme necessário
           ),
           side: border
-              ? const BorderSide(color: AppColorStyles.neutral600, width: 0.5)
+              ? BorderSide(
+                  color: colorStyles.materialNeutral.shade600, width: 0.5)
               : const BorderSide(color: Colors.transparent),
           backgroundColor: backgroundColor,
         ),
         onPressed: onPressed,
         child: isLoading
-            ? const CircularProgressIndicator(
-                color: AppColorStyles.white,
+            ? CircularProgressIndicator(
+                color: colorStyles.white,
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,

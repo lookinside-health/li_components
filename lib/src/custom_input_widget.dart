@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sisgocomponents/sisgocomponents.dart';
 import 'package:sisgocomponents/src/app_color_styles.dart';
 
 enum InputVariation {
@@ -38,7 +39,7 @@ class CustomInputWidget extends StatelessWidget {
     return Container(
       height: 56,
       decoration: BoxDecoration(
-          color: AppColorStyles.neutral300,
+          color: colorStyles.materialNeutral.shade300,
           borderRadius: BorderRadius.circular(10)),
       width: size.width,
       child: TextFormField(
@@ -46,7 +47,7 @@ class CustomInputWidget extends StatelessWidget {
         style: GoogleFonts.inter(
           fontSize: 16,
           fontWeight: FontWeight.normal,
-          color: AppColorStyles.neutral900,
+          color: colorStyles.materialNeutral.shade900,
         ),
         controller: controller,
         keyboardType: type,
@@ -59,7 +60,7 @@ class CustomInputWidget extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: AppColorStyles.neutral900,
+                color: colorStyles.materialNeutral.shade900,
               ),
             ],
           ),
@@ -77,7 +78,7 @@ class CustomInputWidget extends StatelessWidget {
           hintStyle: GoogleFonts.inter(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-            color: AppColorStyles.neutral700,
+            color: colorStyles.materialNeutral.shade700,
           ),
           hintText: placeHolder,
           contentPadding: const EdgeInsets.only(

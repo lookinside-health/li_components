@@ -5,6 +5,8 @@ import 'package:sisgocomponents/src/app_color_styles.dart';
 import 'package:sisgocomponents/src/app_text_styles.dart';
 import 'package:sisgocomponents/src/custom_text_widget.dart';
 
+import '../sisgocomponents.dart';
+
 /// Componente para o CustomDropdown
 // Dropdown component
 class CustomDropdownWidget extends StatelessWidget {
@@ -23,7 +25,7 @@ class CustomDropdownWidget extends StatelessWidget {
       alignment: Alignment.center,
       height: 56,
       decoration: BoxDecoration(
-          color: AppColorStyles.neutral300,
+          color: colorStyles.materialNeutral.shade300,
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonFormField<String>(
         isExpanded: true,
@@ -39,8 +41,8 @@ class CustomDropdownWidget extends StatelessWidget {
             value: value,
             child: CustomTextWidget(
               value,
-              style:
-                  AppTextStyles.paragraph(textColor: AppColorStyles.neutral700),
+              style: AppTextStyles.paragraph(
+                  textColor: colorStyles.materialNeutral.shade700),
             ),
           );
         }).toList(),
