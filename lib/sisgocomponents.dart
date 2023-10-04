@@ -9,7 +9,7 @@ export 'src/custom_text_widget.dart';
 
 AppColorStyles colorStyles = AppColorStyles.instance;
 
-class MyPackage {
+class SisgoComponents {
   static bool _isInitialized = false;
 
   static void init({
