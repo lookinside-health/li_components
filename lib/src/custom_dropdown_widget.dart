@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:sisgocomponents/src/app_color_styles.dart';
-import 'package:sisgocomponents/src/app_text_styles.dart';
-import 'package:sisgocomponents/src/custom_text_widget.dart';
+import 'package:li_components/src/app_color_styles.dart';
+import 'package:li_components/src/app_text_styles.dart';
+import 'package:li_components/src/custom_text_widget.dart';
 
-import '../sisgocomponents.dart';
+import '../li_components.dart';
 
 /// Componente para o CustomDropdown
 // Dropdown component

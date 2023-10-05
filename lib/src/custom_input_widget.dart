@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:sisgocomponents/sisgocomponents.dart';
-import 'package:sisgocomponents/src/app_text_styles.dart';
+import 'package:li_components/li_components.dart';
+import 'package:li_components/src/app_text_styles.dart';
 
 enum InputVariation {
   longInput,

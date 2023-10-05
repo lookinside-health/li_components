@@ -1,6 +1,6 @@
-library sisgocomponents;
+library li_components;
 
-import 'package:sisgocomponents/src/app_color_styles.dart';
+import 'package:li_components/src/app_color_styles.dart';
 
 export 'src/custom_button_widget.dart';
 export 'src/custom_dropdown_widget.dart';
@@ -11,7 +11,7 @@ export 'src/app_text_styles.dart';
 
 AppColorStyles colorStyles = AppColorStyles.instance;
 
-class SisgoComponents {
+class LIComponents {
   static bool _isInitialized = false;
 
   static void init({
