@@ -15,10 +15,11 @@ class CustomInputWidget extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType type;
   final bool obsText;
-  final Function(String) onChanged;
-  final IconData icon;
-  final bool isPassword;
-  final String? Function(String?) validator;
+  final Function(String)? onChanged;
+  final IconData? icon;
+  final bool? isPassword;
+  final bool? isEnabled;
+  final String? Function(String?)? validator;
   final Color? backgroundColor;
   final Color? textColor;
   final Color? hintColor;
@@ -29,15 +30,16 @@ class CustomInputWidget extends StatelessWidget {
     required this.placeHolder,
     required this.controller,
     required this.type,
-    required this.obsText,
-    required this.onChanged,
-    required this.icon,
-    required this.isPassword,
-    required this.validator,
+    this.obsText = false,
+    this.onChanged,
+    this.icon,
+    this.isPassword,
+    this.validator,
     this.backgroundColor,
     this.textColor,
     this.hintColor,
     this.iconColor,
+    this.isEnabled = true,
   }) : super(key: key);
 
   /// Widget para o Input customizado
@@ -59,7 +61,8 @@ class CustomInputWidget extends StatelessWidget {
         keyboardType: type,
         obscureText: obsText,
         onChanged: onChanged,
-        validator: validator,
+        validator: validator ?? (_) => '',
+        enabled: isEnabled,
         decoration: InputDecoration(
           prefixIcon: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +73,7 @@ class CustomInputWidget extends StatelessWidget {
               ),
             ],
           ),
-          suffixIcon: isPassword
+          suffixIcon: isPassword ?? false
               ? InkWell(
                   onTap: () {
                     !obsText;
