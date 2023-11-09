@@ -12,6 +12,7 @@ import '../li_components.dart';
 class CustomDropdownWidget extends StatelessWidget {
   String value;
   List<String> items;
+  String hintText;
   Color? backgroundColor;
   Color? textColor;
 
@@ -19,6 +20,7 @@ class CustomDropdownWidget extends StatelessWidget {
     Key? key,
     required this.value,
     required this.items,
+    required this.hintText,
     this.backgroundColor,
     this.textColor,
   }) : super(key: key);
@@ -32,6 +34,7 @@ class CustomDropdownWidget extends StatelessWidget {
           color: backgroundColor ?? colorStyles.materialNeutral.shade300,
           borderRadius: BorderRadius.circular(10)),
       child: DropdownButtonFormField<String>(
+        hint: Text(hintText),
         isExpanded: true,
         value: value,
         decoration: const InputDecoration(
