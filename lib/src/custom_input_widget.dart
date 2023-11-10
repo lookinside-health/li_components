@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:li_components/li_components.dart';
@@ -24,6 +25,7 @@ class CustomInputWidget extends StatelessWidget {
   final Color? textColor;
   final Color? hintColor;
   final Color? iconColor;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomInputWidget({
     Key? key,
@@ -34,12 +36,13 @@ class CustomInputWidget extends StatelessWidget {
     this.onChanged,
     this.icon,
     this.isPassword,
+    this.isEnabled = true,
     this.validator,
     this.backgroundColor,
     this.textColor,
     this.hintColor,
     this.iconColor,
-    this.isEnabled = true,
+    this.inputFormatters,
   }) : super(key: key);
 
   /// Widget para o Input customizado
@@ -54,6 +57,7 @@ class CustomInputWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)),
       width: size.width,
       child: TextFormField(
+        inputFormatters: inputFormatters,
         textAlignVertical: TextAlignVertical.center,
         style: AppTextStyles.paragraph(
             textColor: textColor ?? colorStyles.materialNeutral.shade900),
