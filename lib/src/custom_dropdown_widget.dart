@@ -1,10 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:li_components/src/app_color_styles.dart';
-import 'package:li_components/src/app_text_styles.dart';
-import 'package:li_components/src/custom_text_widget.dart';
-
 import '../li_components.dart';
 
 /// Componente para o CustomDropdown
@@ -15,6 +11,7 @@ class CustomDropdownWidget extends StatelessWidget {
   String hintText;
   Color? backgroundColor;
   Color? textColor;
+  Function(String?)? onChanged;
 
   CustomDropdownWidget({
     Key? key,
@@ -23,6 +20,7 @@ class CustomDropdownWidget extends StatelessWidget {
     required this.hintText,
     this.backgroundColor,
     this.textColor,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -53,7 +51,7 @@ class CustomDropdownWidget extends StatelessWidget {
             ),
           );
         }).toList(),
-        onChanged: (String? newValue) {},
+        onChanged: onChanged,
         validator: (String? value) {
           return null;
         },
