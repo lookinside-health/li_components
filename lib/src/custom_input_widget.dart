@@ -12,12 +12,14 @@ enum InputVariation {
 }
 
 class CustomInputWidget extends StatelessWidget {
-  final String placeHolder;
+  final String label;
   final TextEditingController controller;
-  final TextInputType type;
+  final TextInputType? type;
   final bool obsText;
   final Function(String)? onChanged;
-  final IconData? icon;
+  final String? suffixText;
+  final Icon? prefixIcon;
+  final Icon? suffixIcon;
   final bool? isPassword;
   final bool? isEnabled;
   final String? Function(String?)? validator;
@@ -29,12 +31,14 @@ class CustomInputWidget extends StatelessWidget {
 
   const CustomInputWidget({
     Key? key,
-    required this.placeHolder,
+    required this.label,
     required this.controller,
     required this.type,
     this.obsText = false,
     this.onChanged,
-    this.icon,
+    this.suffixText,
+    this.prefixIcon,
+    this.suffixIcon,
     this.isPassword,
     this.isEnabled = true,
     this.validator,
@@ -49,13 +53,14 @@ class CustomInputWidget extends StatelessWidget {
   // Widget for Input Custom
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
-      height: 56,
       decoration: BoxDecoration(
-          color: backgroundColor ?? colorStyles.materialNeutral.shade300,
-          borderRadius: BorderRadius.circular(10)),
-      width: size.width,
+        borderRadius: BorderRadius.circular(10),
+        color: backgroundColor ??
+            (isEnabled!
+                ? colorStyles.white
+                : colorStyles.materialNeutral.shade600),
+      ),
       child: TextFormField(
         inputFormatters: inputFormatters,
         textAlignVertical: TextAlignVertical.center,
@@ -68,36 +73,44 @@ class CustomInputWidget extends StatelessWidget {
         validator: validator ?? (_) => '',
         enabled: isEnabled,
         decoration: InputDecoration(
-          prefixIcon: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                color: iconColor ?? colorStyles.materialNeutral.shade900,
-              ),
-            ],
+          contentPadding: const EdgeInsets.only(top: 12.0, left: 8, right: 8),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          suffixText: suffixText,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: colorStyles.black,
+              width: 1,
+            ),
           ),
-          suffixIcon: isPassword ?? false
-              ? InkWell(
-                  onTap: () {
-                    !obsText;
-                  },
-                  child: (obsText
-                      ? Icon(Icons.visibility_off)
-                      : Icon(Icons.visibility)),
-                )
-              : null,
-          border: InputBorder.none,
-          hintStyle: GoogleFonts.inter(
-            fontSize: 16,
-            fontWeight: FontWeight.normal,
-            color: hintColor ?? colorStyles.materialNeutral.shade700,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: colorStyles.black,
+              width: 1,
+            ),
           ),
-          hintText: placeHolder,
-          contentPadding: const EdgeInsets.only(
-            left: 10,
-            bottom: 7,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: colorStyles.black,
+              width: 1,
+            ),
           ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: colorStyles.black,
+              width: 1,
+            ),
+          ),
+          hintStyle: AppTextStyles.paragraph(
+            textColor: hintColor ?? colorStyles.materialNeutral.shade700,
+          ),
+          labelStyle: AppTextStyles.label(
+              textColor: AppColorStyles.instance.materialNeutral.shade900),
+          label: Text(label),
         ),
       ),
     );
