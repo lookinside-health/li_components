@@ -19,7 +19,7 @@ class CustomInputWidget extends StatelessWidget {
   final Function(String)? onChanged;
   final String? suffixText;
   final Icon? prefixIcon;
-  final Icon? suffixIcon;
+  final Widget? suffixIcon;
   final bool? isPassword;
   final bool? isEnabled;
   final String? Function(String?)? validator;
