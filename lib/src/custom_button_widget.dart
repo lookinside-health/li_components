@@ -62,7 +62,7 @@ class CustomButtonWidget extends StatelessWidget {
           backgroundColor:
               backgroundColor ?? colorStyles.materialPrimary.shade500,
         ),
-        onPressed: onPressed,
+        onPressed: isLoading ? () {} : onPressed,
         child: isLoading
             ? CircularProgressIndicator(
                 color: colorStyles.white,
