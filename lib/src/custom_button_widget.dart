@@ -80,7 +80,7 @@ class CustomButtonWidget extends StatelessWidget {
                             )
                           ],
                         ),
-                  CustomTextWidget(text,
+                  Text(text,
                       style: AppTextStyles.paragraph(
                           textColor: textColor ?? colorStyles.white)),
                 ],
