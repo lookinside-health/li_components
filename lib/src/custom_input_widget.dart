@@ -28,6 +28,7 @@ class CustomInputWidget extends StatelessWidget {
   final Color? hintColor;
   final Color? iconColor;
   final List<TextInputFormatter>? inputFormatters;
+  final Function(String)? onFieldSubmitted;
 
   const CustomInputWidget({
     Key? key,
@@ -47,6 +48,7 @@ class CustomInputWidget extends StatelessWidget {
     this.hintColor,
     this.iconColor,
     this.inputFormatters,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   /// Widget para o Input customizado
@@ -112,6 +114,7 @@ class CustomInputWidget extends StatelessWidget {
               textColor: AppColorStyles.instance.materialNeutral.shade900),
           label: Text(label),
         ),
+        onFieldSubmitted: onFieldSubmitted,
       ),
     );
   }
